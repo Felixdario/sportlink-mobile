@@ -56,98 +56,65 @@ export default function HomeScreen() {
   const navigation = useNavigation<NavigationProp>();
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#1a1a1a' }}>      <View style={{ padding: 20, backgroundColor: '#FF4D4D' }}>
-        <View style={{ 
-          flexDirection: 'row', 
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}>
-          <Text style={{ color: '#fff', fontSize: 28, fontWeight: 'bold' }}>Sports Hub</Text>
+    <View className="flex-1 bg-[#1a1a1a]">
+      <View className="p-5 bg-[#FF4D4D]">
+        <View className="flex-row justify-between items-center">
+          <Text className="text-white text-2xl font-bold">Sports Hub</Text>
           <TouchableOpacity
             onPress={() => navigation.navigate('CreateCompetition')}
-            style={{
-              backgroundColor: '#fff',
-              padding: 10,
-              borderRadius: 20,
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}
+            className="bg-white px-3 py-2.5 rounded-full flex-row items-center"
           >
             <MaterialIcons name="add" size={20} color="#FF4D4D" />
-            <Text style={{ color: '#FF4D4D', marginLeft: 5, fontWeight: 'bold' }}>
+            <Text className="text-[#FF4D4D] ml-1.5 font-bold">
               Nova Competição
             </Text>
           </TouchableOpacity>
         </View>
-        <View style={{ flexDirection: 'row', marginTop: 20 }}>
+        <View className="flex-row mt-5">
           <TouchableOpacity
             onPress={() => setActiveTab('competitions')}
-            style={{
-              backgroundColor: activeTab === 'competitions' ? '#fff' : 'transparent',
-              padding: 10,
-              borderRadius: 20,
-              marginRight: 10,
-            }}
+            className={`px-3 py-2.5 rounded-full mr-2.5 ${activeTab === 'competitions' ? 'bg-white' : 'bg-transparent'}`}
           >
-            <Text
-              style={{
-                color: activeTab === 'competitions' ? '#FF4D4D' : '#fff',
-                fontWeight: 'bold',
-              }}
-            >
+            <Text className={`font-bold ${activeTab === 'competitions' ? 'text-[#FF4D4D]' : 'text-white'}`}>
               Competitions
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setActiveTab('rankings')}
-            style={{
-              backgroundColor: activeTab === 'rankings' ? '#fff' : 'transparent',
-              padding: 10,
-              borderRadius: 20,
-            }}
+            className={`px-3 py-2.5 rounded-full ${activeTab === 'rankings' ? 'bg-white' : 'bg-transparent'}`}
           >
-            <Text
-              style={{
-                color: activeTab === 'rankings' ? '#FF4D4D' : '#fff',
-                fontWeight: 'bold',
-              }}
-            >
+            <Text className={`font-bold ${activeTab === 'rankings' ? 'text-[#FF4D4D]' : 'text-white'}`}>
               Rankings
             </Text>
           </TouchableOpacity>
         </View>
       </View>
 
-      <ScrollView style={{ flex: 1, padding: 20 }}>
+      <ScrollView className="flex-1 p-5">
         {activeTab === 'competitions' ? (
           <View>
-            <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold', marginBottom: 15 }}>
+            <Text className="text-white text-xl font-bold mb-4">
               Upcoming Competitions
             </Text>
             {mockCompetitions.map((competition) => (
               <TouchableOpacity
                 key={competition.id}
-                style={{
-                  backgroundColor: '#2a2a2a',
-                  padding: 15,
-                  borderRadius: 10,
-                  marginBottom: 15,
-                }}
+                className="bg-[#2a2a2a] p-4 rounded-xl mb-4"
               >
-                <Text style={{ color: '#FF4D4D', fontSize: 18, fontWeight: 'bold' }}>
+                <Text className="text-[#FF4D4D] text-lg font-bold">
                   {competition.name}
                 </Text>
-                <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                <View className="flex-row mt-2.5">
                   <MaterialIcons name="event" size={20} color="#888" />
-                  <Text style={{ color: '#888', marginLeft: 5 }}>{competition.date}</Text>
+                  <Text className="text-[#888] ml-1.5">{competition.date}</Text>
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: 5 }}>
+                <View className="flex-row mt-1.5">
                   <MaterialIcons name="location-on" size={20} color="#888" />
-                  <Text style={{ color: '#888', marginLeft: 5 }}>{competition.venue}</Text>
+                  <Text className="text-[#888] ml-1.5">{competition.venue}</Text>
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: 5 }}>
+                <View className="flex-row mt-1.5">
                   <MaterialIcons name="people" size={20} color="#888" />
-                  <Text style={{ color: '#888', marginLeft: 5 }}>
+                  <Text className="text-[#888] ml-1.5">
                     {competition.participants} participants
                   </Text>
                 </View>
@@ -156,33 +123,26 @@ export default function HomeScreen() {
           </View>
         ) : (
           <View>
-            <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold', marginBottom: 15 }}>
+            <Text className="text-white text-xl font-bold mb-4">
               Top Athletes
             </Text>
             {mockAthletes.map((athlete) => (
               <TouchableOpacity
                 key={athlete.id}
-                style={{
-                  backgroundColor: '#2a2a2a',
-                  padding: 15,
-                  borderRadius: 10,
-                  marginBottom: 15,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                }}
+                className="bg-[#2a2a2a] p-4 rounded-xl mb-4 flex-row items-center"
               >
                 <Image
                   source={{ uri: athlete.image }}
-                  style={{ width: 60, height: 60, borderRadius: 30 }}
+                  className="w-[60px] h-[60px] rounded-full"
                 />
-                <View style={{ marginLeft: 15, flex: 1 }}>
-                  <Text style={{ color: '#fff', fontSize: 18, fontWeight: 'bold' }}>
+                <View className="ml-4 flex-1">
+                  <Text className="text-white text-lg font-bold">
                     {athlete.name}
                   </Text>
-                  <Text style={{ color: '#888' }}>{athlete.sport}</Text>
-                  <View style={{ flexDirection: 'row', marginTop: 5 }}>
+                  <Text className="text-[#888]">{athlete.sport}</Text>
+                  <View className="flex-row mt-1.5">
                     <MaterialIcons name="emoji-events" size={20} color="#FF4D4D" />
-                    <Text style={{ color: '#FF4D4D', marginLeft: 5 }}>
+                    <Text className="text-[#FF4D4D] ml-1.5">
                       Rank #{athlete.ranking} • {athlete.points} pts
                     </Text>
                   </View>

@@ -7,7 +7,7 @@ import { Toaster } from 'sonner-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import HomeScreen from "./screens/HomeScreen";
 import LandingScreen from "./components/LandingScreen";
-import AuthScreen from "./screens/AuthScreen";
+import AuthScreen from "./screens/Auth/LoginScreen";
 import CourtsScreen from "./screens/CourtsScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import CreateCompetitionScreen from "./screens/CreateCompetitionScreen";
@@ -15,12 +15,12 @@ import CreateCompetitionScreen from "./screens/CreateCompetitionScreen";
 type RootStackParamList = {
   Landing: undefined;
   Auth: undefined;
-  Home: undefined;
+  MainTabs: undefined;
   CreateCompetition: undefined;
 };
 
 type TabParamList = {
-  HomeTab: undefined;
+  Home: undefined;
   Courts: undefined;
   Profile: undefined;
 };
@@ -42,7 +42,7 @@ function TabNavigator() {
       }}
     >
       <Tab.Screen
-        name="HomeTab"
+        name="Home"
         component={HomeScreen}
         options={{
           tabBarLabel: 'Home',
@@ -77,14 +77,15 @@ function TabNavigator() {
 
 function RootStack() {
   return (
-    <Stack.Navigator 
+    <Stack.Navigator
       screenOptions={{
         headerShown: false
       }}
-      initialRouteName="Landing"
+      initialRouteName="MainTabs"
     >
+      <Stack.Screen name="MainTabs" component={TabNavigator} />
       <Stack.Screen name="Landing" component={LandingScreen} />
-      <Stack.Screen name="Auth" component={AuthScreen} />      <Stack.Screen name="Home" component={TabNavigator} />
+      <Stack.Screen name="Auth" component={AuthScreen} />
       <Stack.Screen name="CreateCompetition" component={CreateCompetitionScreen} />
     </Stack.Navigator>
   );

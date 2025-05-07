@@ -29,77 +29,59 @@ export default function CreateCompetitionScreen() {
   };
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: '#1a1a1a' }}>
-      <View style={{ padding: 20 }}>
-        <Text style={{ color: '#fff', fontSize: 28, fontWeight: 'bold', marginBottom: 20 }}>
+    <ScrollView className="flex-1 bg-[#1a1a1a]">
+      <View className="p-5">
+        <Text className="text-white text-2xl font-bold mb-5">
           Criar Nova Competição
         </Text>
 
-        <View style={{ marginBottom: 20 }}>
-          <Text style={{ color: '#fff', marginBottom: 5 }}>Nome da Competição *</Text>
-          <View style={{ 
-            backgroundColor: '#2a2a2a',
-            borderRadius: 10,
-            padding: 15,
-          }}>
+        <View className="mb-5">
+          <Text className="text-white mb-1">Nome da Competição *</Text>
+          <View className="bg-[#2a2a2a] rounded-xl p-4">
             <TextInput
               value={formData.name}
               onChangeText={(text) => setFormData({ ...formData, name: text })}
               placeholder="Digite o nome da competição"
               placeholderTextColor="#666"
-              style={{ color: '#fff' }}
+              className="text-white"
             />
           </View>
         </View>
 
-        <View style={{ marginBottom: 20 }}>
-          <Text style={{ color: '#fff', marginBottom: 5 }}>Esporte *</Text>
-          <View style={{ 
-            backgroundColor: '#2a2a2a',
-            borderRadius: 10,
-            padding: 15,
-          }}>
+        <View className="mb-5">
+          <Text className="text-white mb-1">Esporte *</Text>
+          <View className="bg-[#2a2a2a] rounded-xl p-4">
             <TextInput
               value={formData.sport}
               onChangeText={(text) => setFormData({ ...formData, sport: text })}
               placeholder="Digite o esporte"
               placeholderTextColor="#666"
-              style={{ color: '#fff' }}
+              className="text-white"
             />
           </View>
         </View>
 
-        <View style={{ marginBottom: 20 }}>
-          <Text style={{ color: '#fff', marginBottom: 5 }}>Local *</Text>
-          <View style={{ 
-            backgroundColor: '#2a2a2a',
-            borderRadius: 10,
-            padding: 15,
-          }}>
+        <View className="mb-5">
+          <Text className="text-white mb-1">Local *</Text>
+          <View className="bg-[#2a2a2a] rounded-xl p-4">
             <TextInput
               value={formData.venue}
               onChangeText={(text) => setFormData({ ...formData, venue: text })}
               placeholder="Digite o local"
               placeholderTextColor="#666"
-              style={{ color: '#fff' }}
+              className="text-white"
             />
           </View>
         </View>
 
-        <View style={{ marginBottom: 20 }}>
-          <Text style={{ color: '#fff', marginBottom: 5 }}>Data *</Text>
+        <View className="mb-5">
+          <Text className="text-white mb-1">Data *</Text>
           <TouchableOpacity
             onPress={() => setShowDatePicker(true)}
-            style={{ 
-              backgroundColor: '#2a2a2a',
-              borderRadius: 10,
-              padding: 15,
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}
+            className="bg-[#2a2a2a] rounded-xl p-4 flex-row items-center"
           >
             <MaterialIcons name="event" size={24} color="#FF4D4D" />
-            <Text style={{ color: '#fff', marginLeft: 10 }}>
+            <Text className="text-white ml-2.5">
               {formData.date.toLocaleDateString()}
             </Text>
           </TouchableOpacity>
@@ -119,31 +101,23 @@ export default function CreateCompetitionScreen() {
           />
         )}
 
-        <View style={{ marginBottom: 20 }}>
-          <Text style={{ color: '#fff', marginBottom: 5 }}>Número Máximo de Participantes</Text>
-          <View style={{ 
-            backgroundColor: '#2a2a2a',
-            borderRadius: 10,
-            padding: 15,
-          }}>
+        <View className="mb-5">
+          <Text className="text-white mb-1">Número Máximo de Participantes</Text>
+          <View className="bg-[#2a2a2a] rounded-xl p-4">
             <TextInput
               value={formData.maxParticipants}
               onChangeText={(text) => setFormData({ ...formData, maxParticipants: text })}
               placeholder="Digite o número máximo de participantes"
               placeholderTextColor="#666"
               keyboardType="numeric"
-              style={{ color: '#fff' }}
+              className="text-white"
             />
           </View>
         </View>
 
-        <View style={{ marginBottom: 30 }}>
-          <Text style={{ color: '#fff', marginBottom: 5 }}>Descrição</Text>
-          <View style={{ 
-            backgroundColor: '#2a2a2a',
-            borderRadius: 10,
-            padding: 15,
-          }}>
+        <View className="mb-8">
+          <Text className="text-white mb-1">Descrição</Text>
+          <View className="bg-[#2a2a2a] rounded-xl p-4">
             <TextInput
               value={formData.description}
               onChangeText={(text) => setFormData({ ...formData, description: text })}
@@ -151,21 +125,17 @@ export default function CreateCompetitionScreen() {
               placeholderTextColor="#666"
               multiline
               numberOfLines={4}
-              style={{ color: '#fff', textAlignVertical: 'top' }}
+              className="text-white"
+              textAlignVertical="top"
             />
           </View>
         </View>
 
         <TouchableOpacity
           onPress={handleCreate}
-          style={{
-            backgroundColor: '#FF4D4D',
-            padding: 15,
-            borderRadius: 10,
-            alignItems: 'center',
-          }}
+          className="bg-[#FF4D4D] p-4 rounded-xl items-center"
         >
-          <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>
+          <Text className="text-white text-base font-bold">
             Criar Competição
           </Text>
         </TouchableOpacity>

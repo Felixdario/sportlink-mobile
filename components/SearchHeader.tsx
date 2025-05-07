@@ -8,23 +8,12 @@ interface SearchHeaderProps {
 
 export default function SearchHeader({ onSearch }: SearchHeaderProps) {
   return (
-    <View style={{ 
-      backgroundColor: '#2a2a2a',
-      margin: 20,
-      borderRadius: 10,
-      flexDirection: 'row',
-      alignItems: 'center',
-      padding: 10,
-    }}>
-      <MaterialIcons name="search" size={24} color="#888" style={{ marginRight: 10 }} />
+    <View className="bg-[#2a2a2a] mx-5 my-5 rounded-xl flex-row items-center p-2.5">
+      <MaterialIcons name="search" size={24} color="#888" className="mr-2.5" />
       <TextInput
         placeholder="Procurar quadras próximas..."
         placeholderTextColor="#888"
-        style={{
-          flex: 1,
-          color: '#fff',
-          fontSize: 16,
-        }}
+        className="flex-1 text-white text-base"
         onChangeText={onSearch}
       />
       <TouchableOpacity>

@@ -24,120 +24,72 @@ export default function ProfileScreen() {
   };
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: '#1a1a1a' }}>
-      <View style={{ 
-        padding: 20,
-        backgroundColor: '#FF4D4D',
-        alignItems: 'center',
-        paddingBottom: 70,
-      }}>
+    <ScrollView className="flex-1 bg-[#1a1a1a]">
+      <View className="p-5 bg-[#FF4D4D] items-center pb-[70px]">
         <Image
           source={{ uri: mockUserData.image }}
-          style={{
-            width: 120,
-            height: 120,
-            borderRadius: 60,
-            borderWidth: 4,
-            borderColor: '#fff',
-          }}
+          className="w-[120px] h-[120px] rounded-full border-4 border-white"
         />
-        <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold', marginTop: 10 }}>
+        <Text className="text-white text-2xl font-bold mt-2.5">
           {mockUserData.name}
         </Text>
-        <Text style={{ color: '#fff', opacity: 0.8 }}>{mockUserData.email}</Text>
+        <Text className="text-white opacity-80">{mockUserData.email}</Text>
       </View>
 
-      <View style={{ 
-        flexDirection: 'row', 
-        justifyContent: 'space-around',
-        marginTop: -50,
-        marginHorizontal: 20,
-      }}>
-        <View style={{
-          backgroundColor: '#2a2a2a',
-          padding: 15,
-          borderRadius: 15,
-          alignItems: 'center',
-          flex: 1,
-          marginHorizontal: 5,
-        }}>
-          <Text style={{ color: '#FF4D4D', fontSize: 24, fontWeight: 'bold' }}>
+      <View className="flex-row justify-around -mt-[50px] mx-5">
+        <View className="bg-[#2a2a2a] p-4 rounded-2xl items-center flex-1 mx-1">
+          <Text className="text-[#FF4D4D] text-2xl font-bold">
             {mockUserData.ranking}
           </Text>
-          <Text style={{ color: '#888' }}>Ranking</Text>
+          <Text className="text-[#888]">Ranking</Text>
         </View>
-        <View style={{
-          backgroundColor: '#2a2a2a',
-          padding: 15,
-          borderRadius: 15,
-          alignItems: 'center',
-          flex: 1,
-          marginHorizontal: 5,
-        }}>
-          <Text style={{ color: '#FF4D4D', fontSize: 24, fontWeight: 'bold' }}>
+        <View className="bg-[#2a2a2a] p-4 rounded-2xl items-center flex-1 mx-1">
+          <Text className="text-[#FF4D4D] text-2xl font-bold">
             {mockUserData.points}
           </Text>
-          <Text style={{ color: '#888' }}>Points</Text>
+          <Text className="text-[#888]">Points</Text>
         </View>
       </View>
 
-      <View style={{ padding: 20 }}>
-        <View style={{ marginBottom: 20 }}>
-          <Text style={{ color: '#fff', fontSize: 18, fontWeight: 'bold', marginBottom: 10 }}>
+      <View className="p-5">
+        <View className="mb-5">
+          <Text className="text-white text-lg font-bold mb-2.5">
             Sports
           </Text>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+          <View className="flex-row flex-wrap">
             {mockUserData.sports.map((sport, index) => (
               <View
                 key={index}
-                style={{
-                  backgroundColor: '#2a2a2a',
-                  paddingHorizontal: 15,
-                  paddingVertical: 8,
-                  borderRadius: 20,
-                  marginRight: 10,
-                  marginBottom: 10,
-                }}
+                className="bg-[#2a2a2a] px-4 py-2 rounded-full mr-2.5 mb-2.5"
               >
-                <Text style={{ color: '#fff' }}>{sport}</Text>
+                <Text className="text-white">{sport}</Text>
               </View>
             ))}
           </View>
         </View>
 
-        <View style={{ marginBottom: 20 }}>
-          <Text style={{ color: '#fff', fontSize: 18, fontWeight: 'bold', marginBottom: 10 }}>
+        <View className="mb-5">
+          <Text className="text-white text-lg font-bold mb-2.5">
             Statistics
           </Text>
-          <View style={{
-            backgroundColor: '#2a2a2a',
-            borderRadius: 15,
-            padding: 15,
-          }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
-              <Text style={{ color: '#888' }}>Total Games</Text>
-              <Text style={{ color: '#fff' }}>{mockUserData.totalGames}</Text>
+          <View className="bg-[#2a2a2a] rounded-2xl p-4">
+            <View className="flex-row justify-between mb-2.5">
+              <Text className="text-[#888]">Total Games</Text>
+              <Text className="text-white">{mockUserData.totalGames}</Text>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <Text style={{ color: '#888' }}>Wins</Text>
-              <Text style={{ color: '#fff' }}>{mockUserData.wins}</Text>
+            <View className="flex-row justify-between">
+              <Text className="text-[#888]">Wins</Text>
+              <Text className="text-white">{mockUserData.wins}</Text>
             </View>
           </View>
         </View>
 
         <TouchableOpacity
           onPress={handleLogout}
-          style={{
-            backgroundColor: '#2a2a2a',
-            padding: 15,
-            borderRadius: 10,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
+          className="bg-[#2a2a2a] p-4 rounded-xl flex-row items-center justify-center"
         >
           <MaterialIcons name="logout" size={24} color="#FF4D4D" />
-          <Text style={{ color: '#FF4D4D', marginLeft: 10, fontSize: 16 }}>Logout</Text>
+          <Text className="text-[#FF4D4D] ml-2.5 text-base">Logout</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

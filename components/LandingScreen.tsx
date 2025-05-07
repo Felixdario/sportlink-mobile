@@ -17,76 +17,65 @@ export default function LandingScreen() {
   const navigation = useNavigation<NavigationProp>();
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: '#1a1a1a' }}>
+    <ScrollView className="flex-1 bg-[#1a1a1a]">
       <ImageBackground
         source={{ uri: 'https://api.a0.dev/assets/image?text=athletes%20playing%20sports%20together%20on%20court%20inspiring&aspect=16:9' }}
-        style={{
-          height: 400,
-          justifyContent: 'center',
-          padding: 20,
-        }}
+        className="h-[400px] justify-center p-5"
       >
-        <View style={{ backgroundColor: 'rgba(0,0,0,0.5)', padding: 20, borderRadius: 15 }}>
-          <Text style={{ color: '#fff', fontSize: 40, fontWeight: 'bold' }}>
+        <View className="bg-black/50 p-5 rounded-2xl">
+          <Text className="text-white text-4xl font-bold">
             Connect. Compete. Conquer.
           </Text>
-          <Text style={{ color: '#fff', fontSize: 18, marginTop: 10 }}>
+          <Text className="text-white text-lg mt-2.5">
             Join the ultimate sports community in your city
           </Text>
         </View>
       </ImageBackground>
 
-      <View style={{ padding: 20 }}>
-        <TouchableOpacity          onPress={() => navigation.navigate('Auth')}
-          style={{
-            backgroundColor: '#FF4D4D',
-            padding: 15,
-            borderRadius: 10,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginVertical: 10,
-          }}
+      <View className="p-5">
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Auth')}
+          className="bg-[#FF4D4D] p-4 rounded-xl flex-row items-center justify-center my-2.5"
         >
-          <Text style={{ color: '#fff', fontSize: 18, fontWeight: 'bold', marginRight: 10 }}>
+          <Text className="text-white text-lg font-bold mr-2.5">
             Get Started
           </Text>
           <MaterialIcons name="arrow-forward" size={24} color="#fff" />
         </TouchableOpacity>
 
-        <View style={{ marginTop: 30 }}>
-          <View style={{ marginBottom: 30 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+        <View className="mt-8">
+          <View className="mb-8">
+            <View className="flex-row items-center mb-2.5">
               <MaterialIcons name="sports-basketball" size={30} color="#FF4D4D" />
-              <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold', marginLeft: 10 }}>
+              <Text className="text-white text-2xl font-bold ml-2.5">
                 Find Competitions
               </Text>
             </View>
-            <Text style={{ color: '#ccc', fontSize: 16 }}>
+            <Text className="text-[#ccc] text-base">
               Discover local tournaments and competitions in your favorite sports
             </Text>
           </View>
 
-          <View style={{ marginBottom: 30 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+          <View className="mb-8">
+            <View className="flex-row items-center mb-2.5">
               <MaterialIcons name="emoji-events" size={30} color="#FF4D4D" />
-              <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold', marginLeft: 10 }}>
+              <Text className="text-white text-2xl font-bold ml-2.5">
                 Track Rankings
               </Text>
             </View>
-            <Text style={{ color: '#ccc', fontSize: 16 }}>
+            <Text className="text-[#ccc] text-base">
               Compete and climb the local rankings in your city
             </Text>
           </View>
 
-          <View style={{ marginBottom: 30 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+          <View className="mb-8">
+            <View className="flex-row items-center mb-2.5">
               <MaterialIcons name="groups" size={30} color="#FF4D4D" />
-              <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold', marginLeft: 10 }}>
+              <Text className="text-white text-2xl font-bold ml-2.5">
                 Connect with Athletes
               </Text>
             </View>
-            <Text style={{ color: '#ccc', fontSize: 16 }}>
+            <Text className="text-[#ccc] text-base">
               Meet other sports enthusiasts and build your network
             </Text>
           </View>

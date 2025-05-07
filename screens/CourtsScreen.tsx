@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import SearchHeader from '../components/SearchHeader';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -39,7 +39,7 @@ export default function CourtsScreen() {
 
   const handleSearch = (text: string) => {
     setSearchQuery(text);
-    const filtered = mockCourts.filter(court => 
+    const filtered = mockCourts.filter(court =>
       court.name.toLowerCase().includes(text.toLowerCase()) ||
       court.address.toLowerCase().includes(text.toLowerCase()) ||
       court.sports.some(sport => sport.toLowerCase().includes(text.toLowerCase()))
@@ -48,71 +48,56 @@ export default function CourtsScreen() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#1a1a1a' }}>
-      <View style={{ 
-        padding: 20, 
-        backgroundColor: '#FF4D4D',
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
-      }}>
-        <Text style={{ color: '#fff', fontSize: 28, fontWeight: 'bold' }}>Quadras Próximas</Text>
-        <Text style={{ color: '#fff', opacity: 0.8, marginTop: 5 }}>
+    <View className="flex-1 bg-[#1a1a1a]">
+      <View className="p-5 bg-[#FF4D4D] rounded-b-[20px]">
+        <Text className="text-white text-2xl font-bold">Quadras Próximas</Text>
+        <Text className="text-white opacity-80 mt-1.5">
           Encontre e participe de atividades perto de você
         </Text>
       </View>
 
-      <SearchHeader onSearch={handleSearch} />      <ScrollView style={{ flex: 1, paddingHorizontal: 20 }}>
+      <SearchHeader onSearch={handleSearch} />
+
+      <ScrollView className="flex-1 px-5">
         {filteredCourts.map((court) => (
           <TouchableOpacity
             key={court.id}
-            style={{
-              backgroundColor: '#2a2a2a',
-              borderRadius: 15,
-              marginBottom: 20,
-              overflow: 'hidden',
-            }}
+            className="bg-[#2a2a2a] rounded-2xl mb-5 overflow-hidden"
           >
             <Image
               source={{ uri: court.image }}
-              style={{ width: '100%', height: 150 }}
+              className="w-full h-[150px]"
             />
-            <View style={{ padding: 15 }}>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}>
+            <View className="p-4">
+              <View className="flex-row justify-between items-center">
+                <Text className="text-white text-xl font-bold">
                   {court.name}
                 </Text>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View className="flex-row items-center">
                   <MaterialIcons name="star" size={20} color="#FFD700" />
-                  <Text style={{ color: '#fff', marginLeft: 5 }}>{court.rating}</Text>
+                  <Text className="text-white ml-1.5">{court.rating}</Text>
                 </View>
               </View>
 
-              <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
+              <View className="flex-row items-center mt-2.5">
                 <MaterialIcons name="location-on" size={20} color="#888" />
-                <Text style={{ color: '#888', marginLeft: 5 }}>{court.address}</Text>
+                <Text className="text-[#888] ml-1.5">{court.address}</Text>
               </View>
 
-              <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
+              <View className="flex-row items-center mt-2.5">
                 <MaterialIcons name="people" size={20} color="#FF4D4D" />
-                <Text style={{ color: '#FF4D4D', marginLeft: 5 }}>
+                <Text className="text-[#FF4D4D] ml-1.5">
                   {court.currentlyActive} people active now
                 </Text>
               </View>
 
-              <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: 10 }}>
+              <View className="flex-row flex-wrap mt-2.5">
                 {court.sports.map((sport, index) => (
                   <View
                     key={index}
-                    style={{
-                      backgroundColor: '#1a1a1a',
-                      paddingHorizontal: 10,
-                      paddingVertical: 5,
-                      borderRadius: 15,
-                      marginRight: 10,
-                      marginTop: 5,
-                    }}
+                    className="bg-[#1a1a1a] px-2.5 py-1.5 rounded-2xl mr-2.5 mt-1.5"
                   >
-                    <Text style={{ color: '#fff' }}>{sport}</Text>
+                    <Text className="text-white">{sport}</Text>
                   </View>
                 ))}
               </View>
