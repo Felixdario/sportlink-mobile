@@ -3,7 +3,15 @@ import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { toast } from 'sonner-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+type RootStackParamList = {
+  Landing: undefined;
+  Auth: undefined;
+  Home: undefined;
+  CreateCompetition: undefined;
+};
 
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 const mockUserData = {
   name: "Alex Johnson",
   email: "alex@example.com",
@@ -16,7 +24,7 @@ const mockUserData = {
 };
 
 export default function ProfileScreen() {
-  const navigation = useNavigation();
+ const navigation = useNavigation<NavigationProp>();
 
   const handleLogout = () => {
     toast.success('Logged out successfully');
@@ -25,7 +33,7 @@ export default function ProfileScreen() {
 
   return (
     <ScrollView className="flex-1 bg-[#1a1a1a]">
-      <View className="p-5 bg-[#FF4D4D] items-center pb-[70px]">
+      <View className="p-5 pt-12 bg-[#FF4D4D] items-center pb-[70px]">
         <Image
           source={{ uri: mockUserData.image }}
           className="w-[120px] h-[120px] rounded-full border-4 border-white"

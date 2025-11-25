@@ -30,7 +30,7 @@ export default function CreateCompetitionScreen() {
 
   return (
     <ScrollView className="flex-1 bg-[#1a1a1a]">
-      <View className="p-5">
+      <View className="p-5 pt-12">
         <Text className="text-white text-2xl font-bold mb-5">
           Criar Nova Competição
         </Text>

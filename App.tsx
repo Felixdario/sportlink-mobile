@@ -6,15 +6,21 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Toaster } from 'sonner-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import HomeScreen from "./screens/HomeScreen";
-import LandingScreen from "./components/LandingScreen";
-import AuthScreen from "./screens/Auth/LoginScreen";
+import AthletesScreen from "./screens/AthletesScreen";
+import LandingScreen from "./screens/LandingScreen";
+import LoginScreen from "./screens/Auth/LoginScreen";
+import RegisterScreen from "./screens/Auth/RegisterScreen";
+import VerifyNumberScreen from "./screens/Auth/VerifyNumberScreen";
 import CourtsScreen from "./screens/CourtsScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import CreateCompetitionScreen from "./screens/CreateCompetitionScreen";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 type RootStackParamList = {
   Landing: undefined;
-  Auth: undefined;
+  LoginScreen: undefined;
+  RegisterScreen: undefined
+  VerifyNumberScreen: undefined;
   MainTabs: undefined;
   CreateCompetition: undefined;
 };
@@ -22,6 +28,9 @@ type RootStackParamList = {
 type TabParamList = {
   Home: undefined;
   Courts: undefined;
+  Competitions: undefined;
+  Athletes: undefined;
+  Mensagens: undefined;
   Profile: undefined;
 };
 
@@ -31,6 +40,7 @@ const Tab = createBottomTabNavigator<TabParamList>();
 function TabNavigator() {
   return (
     <Tab.Navigator
+      id={undefined}
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
@@ -55,12 +65,23 @@ function TabNavigator() {
         name="Courts"
         component={CourtsScreen}
         options={{
-          tabBarLabel: 'Courts',
+          tabBarLabel: 'Quadras',
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="location-on" size={size} color={color} />
           ),
         }}
       />
+            <Tab.Screen
+        name="Athletes"
+        component={AthletesScreen}
+        options={{
+          tabBarLabel: 'Atletas',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="sports-basketball" size={size} color={color} />
+          ),
+        }}
+      />
+
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
@@ -78,14 +99,17 @@ function TabNavigator() {
 function RootStack() {
   return (
     <Stack.Navigator
+      id={undefined}
       screenOptions={{
         headerShown: false
       }}
-      initialRouteName="MainTabs"
+      initialRouteName="Landing"
     >
       <Stack.Screen name="MainTabs" component={TabNavigator} />
       <Stack.Screen name="Landing" component={LandingScreen} />
-      <Stack.Screen name="Auth" component={AuthScreen} />
+      <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+      <Stack.Screen name="VerifyNumberScreen" component={VerifyNumberScreen} />
       <Stack.Screen name="CreateCompetition" component={CreateCompetitionScreen} />
     </Stack.Navigator>
   );
@@ -94,10 +118,12 @@ function RootStack() {
 export default function App() {
   return (
     <SafeAreaProvider style={styles.container}>
-      <Toaster />
-      <NavigationContainer>
-        <RootStack />
-      </NavigationContainer>
+      <GestureHandlerRootView>
+        <Toaster />
+        <NavigationContainer>
+          <RootStack />
+        </NavigationContainer>
+      </GestureHandlerRootView>
     </SafeAreaProvider>
   );
 }

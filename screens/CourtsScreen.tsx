@@ -49,7 +49,7 @@ export default function CourtsScreen() {
 
   return (
     <View className="flex-1 bg-[#1a1a1a]">
-      <View className="p-5 bg-[#FF4D4D] rounded-b-[20px]">
+      <View className="p-5 pt-12 bg-[#FF4D4D] rounded-b-[20px]">
         <Text className="text-white text-2xl font-bold">Quadras Próximas</Text>
         <Text className="text-white opacity-80 mt-1.5">
           Encontre e participe de atividades perto de você
